@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_set.c                                        :+:      :+:    :+:   */
+/*   cote_ps.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 16:06:16 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/02 15:57:07 by mboukhal         ###   ########.fr       */
+/*   Created: 2022/04/01 22:02:59 by mboukhal          #+#    #+#             */
+/*   Updated: 2022/04/02 15:49:21 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-                // alloc and set stack
-int    *set_stack(char **numbers, int size)
+int    valid_cote(char *str)
 {
-    int index;
-    int *stack;
+    int iter;
 
-    index = 0;
-    stack = malloc(sizeof(int) * size + 1);
-    while (numbers[index++])
-        stack[index - 1] = ft_atoi(numbers[index - 1]);
-    return (stack);
+    iter = 0;
+    while (str[iter])
+    {
+        if (!(str[iter] == ' ' || str[iter] == '-' ||
+            (str[iter] <= '9' && str[iter] >= '0')) )
+            cheak_isint(&str);
+        iter++;
+    }
+    return (0);
+}
+
+void    check_all(char **str, int *stack_in, int size)
+{
+    cheak_isint(str);
+    cheak_limit(str);
+    cheak_isdup(stack_in, size);
 }

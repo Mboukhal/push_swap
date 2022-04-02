@@ -6,7 +6,7 @@
 #    By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 12:49:36 by mboukhal          #+#    #+#              #
-#    Updated: 2022/03/23 21:14:45 by mboukhal         ###   ########.fr        #
+#    Updated: 2022/04/02 15:21:11 by mboukhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME				= push_swap
 LIBFT_PHAT			= libft/
 CFILES				= push_swap.c error_ps.c stack_set.c \
-					#instraction1.c #instraction2.c #sort.c
+					instraction1.c cote_ps.c #instraction2.c #sort.c
 CFLAGS				= -Wall -Wextra -Werror -g -fsanitize=address
 LIBFT_MAKE 			= make $@ -C $(LIBFT_PHAT)
 
@@ -40,13 +40,14 @@ $(NAME):$(OBJS)
 
 
 test: re clean 
-	@./push_swap 54 89  546 64 684 2147483647 65 -2147483648
+	@./push_swap 54 -456 0 89 546 64 684 2147483647 65 -2147483648
 	@echo "ok" 
 
 test_limit: re clean 
 	@./push_swap -2147483648 -2147483649 ; ./push_swap 2147483647 2147483648 
 
 test_dup: re clean 
+	@./push_swap 54 89  546 684 2147483647 64 65 6457 -2147483648 
 	@./push_swap 54 89  546 684 2147483647 64 65 64 -2147483648 
 	
 all: $(NAME)

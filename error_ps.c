@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 13:07:05 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/03/23 21:15:25 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:25:50 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,16 @@ void  cheak_isint(char **args)
     }
 }
                     // duplicate
-void    cheak_isdup(int *stack, int ac)
+void    cheak_isdup(int *stack, int size)
 {
     int iter;
     int index;
 
-    iter = 1;
-    while (iter <= ac - 1)
+    iter = 0;
+    while (iter != size )
     {
         index = iter + 1;
-        while (index <= ac - 1)
+        while (index != size )
         {
             if (stack[index] == stack[iter])
             {
@@ -122,4 +122,3 @@ void    cheak_isdup(int *stack, int ac)
         iter++;
     }
 }
-
