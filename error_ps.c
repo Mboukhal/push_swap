@@ -6,13 +6,12 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 13:07:05 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/02 15:25:50 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:35:12 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h>
-
                     // comper whit INT_MAX and INT_MIN
                     // -2147483648 2147483647
 static int comper_str(char *str)
@@ -41,12 +40,12 @@ static int comper_str(char *str)
     free(max);
     return (EXIT_SUCCESS);
 }
-void    cheak_limit(char **args)
+int    cheak_limit(char **args)
 {
     int iter;
     int len;
 
-    iter = 1;
+    iter = 0;
     while (args[iter])
     {
         len = ft_strlen(args[iter]);
@@ -59,20 +58,21 @@ void    cheak_limit(char **args)
                 ft_putstr_fd("] index [", STDERR_FILENO);
                 ft_putnbr_fd(iter, STDERR_FILENO);
                 ft_putstr_fd("] not in integer range !!\n", STDERR_FILENO);
-                exit(EXIT_FAILURE);
+                return(EXIT_FAILURE);
             }
         }
         iter++;
     }
+    return(EXIT_SUCCESS);
 }
 
                 // isnumber && isint
-void  cheak_isint(char **args)
+int  cheak_isint(char **args)
 {
     int i;
     int j;
 
-    i = 1;
+    i = 0;
     while (args[i])
     {
         j = 0;
@@ -87,15 +87,16 @@ void  cheak_isint(char **args)
                 ft_putstr_fd("] index [", STDERR_FILENO);
                 ft_putnbr_fd(i, STDERR_FILENO);
                 ft_putstr_fd("] not integer !!\n", STDERR_FILENO);
-                exit(EXIT_FAILURE);
+                return(EXIT_FAILURE);
             }
             j++;
         }
         i++;
     }
+    return(EXIT_SUCCESS);
 }
                     // duplicate
-void    cheak_isdup(int *stack, int size)
+int    cheak_isdup(int *stack, int size)
 {
     int iter;
     int index;
@@ -115,10 +116,11 @@ void    cheak_isdup(int *stack, int size)
                 ft_putstr_fd("] and [", STDERR_FILENO);
                 ft_putnbr_fd(iter, STDERR_FILENO);
                 ft_putstr_fd("] duplicated number !!\n", STDERR_FILENO);
-                exit(EXIT_FAILURE);
+                return(EXIT_FAILURE);
             }
             index++;
         }
         iter++;
     }
+    return(EXIT_SUCCESS);
 }

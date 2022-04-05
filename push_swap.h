@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/02 15:34:33 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/05 02:04:27 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,62 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include "libft/libft.h"
 
-        // cheak parmeter if numbers in double cote
+# define SA     0
+# define SB     1
+# define SS     2
+
+# define PA     0
+# define PB     1
+
+# define RA     0
+# define RB     1
+# define RR     2
+
+# define RRA     0
+# define RRB     1
+# define RRR     2
+
+                        /*
+                         *      index[0] first address of list
+                         *      index[1] last address of list
+                         *      size of stack (count betwin index[0] and index[1])
+                         */
+typedef struct stacks
+{
+        int     *index_first;
+        int     *index_last;
+        int     size;
+        int     *top;
+        int     *bottom;
+}               looped_stack;
+
+/********************** TORM:*********************/
+
+# include <stdio.h>
+void    p_stack(int *stack, int count);
+void    p_loop(looped_stack *s);
+/*************************************************/
+
+
+int     ft_pop(looped_stack *s);
+void    ft_push(looped_stack *s, int data);
+
+int     *cp_stack(int *st, int size);
 void    cheak_arg(char *av, int size);
 int     valid_cote(char *str);
-void    check_all(char **str, int *stack_in, int size);
+void    check_all(char **str, int *stack_in, int size, int status);
 
 int     *set_stack(char **numbers, int size);
-void    cheak_isint(char **args);
-void    cheak_isdup(int *stack,int size);
-void    cheak_limit(char **args);
-void    sort_stack(int *stack_a, int *stack_b);
-void    sa(int *stack);
+int     cheak_isint(char **args);
+int     cheak_isdup(int *stack,int size);
+int     cheak_limit(char **args);
+void    sort_stack(int *stack, int size);
 
+void    ra_rb_rr(looped_stack *sa,looped_stack *sb, int status);
+void    rra_rrb_rrr(looped_stack *sa,looped_stack *sb, int status);
+void    sa_sb_ss(looped_stack *sa, looped_stack *sb, int status);
+void    pa_pb(looped_stack *sa, looped_stack *sb, int status);
 
 #endif // PUSH_SWAP_H

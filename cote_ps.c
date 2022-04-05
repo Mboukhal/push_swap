@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 22:02:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/02 15:49:21 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:30:49 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,25 @@ int    valid_cote(char *str)
     return (0);
 }
 
-void    check_all(char **str, int *stack_in, int size)
+void    check_all(char **str, int *stack_in, int size, int status)
 {
-    cheak_isint(str);
-    cheak_limit(str);
-    cheak_isdup(stack_in, size);
+    int result;
+    int i;
+
+    result = EXIT_SUCCESS;
+    result = cheak_isint(str);
+    if (result == EXIT_SUCCESS)
+        result = cheak_limit(str);
+    if (result == EXIT_SUCCESS)
+       result = cheak_isdup(stack_in, size);
+    if (status == 1 && result == EXIT_FAILURE)
+    {
+        i = 0;
+        while (str[i])
+            free(str[i++]);
+        free(str);
+        exit (EXIT_FAILURE);
+    }
+    if (status == 0 && result == EXIT_FAILURE)
+        exit(EXIT_FAILURE);
 }
