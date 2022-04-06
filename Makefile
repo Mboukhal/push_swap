@@ -6,7 +6,7 @@
 #    By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 12:49:36 by mboukhal          #+#    #+#              #
-#    Updated: 2022/04/05 01:21:25 by mboukhal         ###   ########.fr        #
+#    Updated: 2022/04/06 00:54:28 by mboukhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME				= push_swap
 LIBFT_PHAT			= libft/
 CFILES				= torm.c push_swap.c error_ps.c stack_set.c \
-					instraction1.c cote_ps.c sort.c instraction2.c 
+					instraction.c cote_ps.c sort.c looped_list_func.c
 CFLAGS				= -Wall -Wextra -Werror 
 LIBFT_MAKE 			= make $@ -C $(LIBFT_PHAT)
 
