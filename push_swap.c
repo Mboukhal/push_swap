@@ -6,23 +6,24 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:50:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/05 00:56:20 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/06 03:32:13 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int    *cp_stack(int *st, int size)
+int    *cp_stack(int *st, int size, int status)
 {
     int *stack;
     int index;
 
     index = 0;
-    stack = malloc(sizeof(int) * (size + 1));
+    stack = malloc(sizeof(int) * size);
     if (!stack)
         return (NULL);
-    while (index++ < size)
-        stack[index - 1] = st[index - 1];
+    if (status == 0)
+        while (index++ < size)
+            stack[index - 1] = st[index - 1];
     return (stack);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 00:51:46 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/06 00:59:40 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/07 01:21:53 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,25 +84,28 @@ void ft_shift_down(looped_stack *s)
     int new_i;
     int last_index;
 
-    i = 0;
+    i = s->size;
     new_i = 0;
     last_index = 0;
-    tmp = s->bottom[0];
-    while (i < s->size)
+    tmp = s->top[0];
+    while (i > 0)
     {
-        if (s->top - i < s->index_last)
+        if ((s->bottom - i) == s->index_first)
+        {
+            new_i = s->size - i;
             last_index = 1;
+        }
         if (last_index == 1)
         {
-            s->index_first[new_i] = s->index_first[new_i - 1];
+            if ((s->bottom - i) == s->index_first)
+                s->index_first[0] = s->bottom[new_i - 1];
+            else
+                s->bottom[new_i] = s->bottom[new_i - 1];
             new_i--;
         }
         else
-            s->top[i] = s->top[i - 1];
+            s->bottom[i] = s->bottom[i - 1];
         i--;
     }
-    if (last_index == 1)
-        s->index_first[new_i + 1] = tmp;
-    else
-        s->top[i + 1] = tmp;
+    (s->top + 1)[0] = tmp;
 }

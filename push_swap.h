@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/06 00:54:03 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/07 01:22:01 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void    p_loop(looped_stack *s);
 int     ft_pop(looped_stack *s);
 void    ft_push(looped_stack *s, int data);
 
-int     *cp_stack(int *st, int size);
+int     *cp_stack(int *st, int size, int status);
 void    cheak_arg(char *av, int size);
 int     valid_cote(char *str);
 void    check_all(char **str, int *stack_in, int size, int status);
@@ -68,11 +68,11 @@ int     cheak_isdup(int *stack,int size);
 int     cheak_limit(char **args);
 void    sort_stack(int *stack, int size);
 
-void ft_shift_down(looped_stack *s);
-void ft_shift(looped_stack *s);
-void ft_push(looped_stack *s, int data);
-int ft_pop(looped_stack *s);
-void ft_swap(int *s);
+void    ft_shift_down(looped_stack *s);
+void    ft_shift(looped_stack *s);
+void    ft_push(looped_stack *s, int data);
+int     ft_pop(looped_stack *s);
+void    ft_swap(int *s);
 
 
 void    ra_rb_rr(looped_stack *sa,looped_stack *sb, int status);

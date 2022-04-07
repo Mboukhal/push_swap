@@ -9,7 +9,7 @@ void p_stack(int *stack, int count)
         printf("%d \t|%d|\n", i, stack[i]);
         i++;
     }
-    printf("size \t{%d}\n", count);
+    printf("\n\t\t\tsize \t{%d}\n", count);
     printf("--------------------\n");
 }
 
@@ -32,6 +32,6 @@ void    p_loop(looped_stack *s)
             printf("\t|%d|\n", s->top[i]);
         i++;
     }
-    printf("size\t{%d}\n", s->size);
+    printf("\n\t\t\tsize\t{%d}\n", s->size);
 }
 /******************************************************/
