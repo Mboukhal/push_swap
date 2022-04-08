@@ -12,29 +12,16 @@
 
 #include "push_swap.h"
 
-looped_stack  *set_stack_archi(int *stack, int size, int status)
+static t_stack  *set_stack_archi(int *stack, int size)
 {
-    looped_stack  *data;
-    data = malloc(sizeof(looped_stack));
-    data->index_first = cp_stack(stack, size, status);
-    if (status == 0)
-    {
-        data->top = data->index_first;
+    t_stack  *data;
+    data = malloc(sizeof(t_stack));
+    data->top = cp_stack(stack, size);
         data->size = size;
-        data->index_last = data->index_first + size;
-        data->bottom = data->index_first + (size - 1);
-    }
-    else
-    {
-        data->top = data->index_last;
-        data->size = 0;
-        data->index_last = data->index_first;
-        data->bottom = data->index_first;
-    }
-    
     return (data);
 }
-void    ft_bzero_int(int *s, int size)
+
+static void    ft_bzero_int(int *s, int size)
 {
     int i;
     
@@ -42,15 +29,16 @@ void    ft_bzero_int(int *s, int size)
     while (i < size)
         s[i++] = 0; 
 }
+
 void    sort_stack(int *stack, int size)
 {
-    looped_stack    *sa;
-    looped_stack    *sb;
+    t_stack    *sa;
+    t_stack    *sb;
     int             zero[size];
 
     ft_bzero_int(zero, size);
-    sa = set_stack_archi(stack, size, 0);
-    sb = set_stack_archi(zero, size, 1);
+    sa = set_stack_archi(stack, size);
+    sb = set_stack_archi(zero, size);
     
     // p_stack(sa->top, sa->size);
     /*##############################################
@@ -61,19 +49,31 @@ void    sort_stack(int *stack, int size)
     p_loop(sa);
     printf("----------------\n");
 
-    pa_pb(sa, sb, PB);
-    pa_pb(sa, sb, PB);
+    int l = ft_pop(sa);
+    int r = ft_pop(sa);
+    r = ft_pop(sa);
+    r = ft_pop(sa);
+    r = ft_pop(sa);
+    r = ft_pop(sa);
+    r = ft_pop(sa);
+    printf("--------------dfg--\n");
+    printf("|%d|\n", l);
+    printf("|%d|\n", r);
+    printf("-----------dfg-----\n");
+    // ft_push();
+    // pa_pb(sa, sb, PB);
+    // pa_pb(sa, sb, PB);
     // pa_pb(sa, sb, PA);
 
     p_loop(sa);
     printf("----------------\n");
-    p_loop(sb);
+    // p_loop(sb);
     
 
     /*##############################################*/
 
-    free(sb->index_first);
+    // free(sb->top);
     free(sb);
-    free(sa->index_first);
+    // free(sa->top);
     free(sa);
 }

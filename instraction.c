@@ -6,14 +6,14 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:07:41 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/07 01:21:51 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/07 01:35:11 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-void    ra_rb_rr(looped_stack *sa,looped_stack *sb, int status)
+void    ra_rb_rr(t_stack *sa,t_stack *sb, int status)
 {
     if (status == RA)
         ft_shift(sa);
@@ -27,7 +27,7 @@ void    ra_rb_rr(looped_stack *sa,looped_stack *sb, int status)
 }
     
 
-void    rra_rrb_rrr(looped_stack *sa,looped_stack *sb, int status)
+void    rra_rrb_rrr(t_stack *sa,t_stack *sb, int status)
 {
     if (status == RRA)
         ft_shift_down(sa);
@@ -40,7 +40,7 @@ void    rra_rrb_rrr(looped_stack *sa,looped_stack *sb, int status)
     }
 }
 
-void    sa_sb_ss(looped_stack *sa, looped_stack *sb, int status)
+void    sa_sb_ss(t_stack *sa, t_stack *sb, int status)
 {
     if (status == SA && sa->size > 1)
         ft_swap(sa->top);
@@ -55,7 +55,7 @@ void    sa_sb_ss(looped_stack *sa, looped_stack *sb, int status)
     }
 }
 
-void    pa_pb(looped_stack *sa,looped_stack *sb, int status)
+void    pa_pb(t_stack *sa,t_stack *sb, int status)
 {
     int tmp;
 
