@@ -40,18 +40,18 @@ void    rra_rrb_rrr(t_stack *sa,t_stack *sb, int status)
     }
 }
 
-void    sa_sb_ss(t_stack *sa, t_stack *sb, int status)
+void    sa_sb_ss(t_stack *sa, t_stack *sb, int size, int status)
 {
-    if (status == SA && sa->size > 1)
-        ft_swap(sa->top);
-    if (status == SB && sb->size > 1)
-        ft_swap(sb->top);
+    if (status == SA && size > 1)
+        ft_swap_head_stack(sa);
+    if (status == SB && size > 1)
+        ft_swap_head_stack(sb);
     if (status == SS)
     {
-        if (sa->size > 1)
-            ft_swap(sa->top);
-        if (sb->size > 1)
-            ft_swap(sb->top);
+        if (size > 1)
+            ft_swap_head_stack(sa);
+        if (size > 1)
+            ft_swap_head_stack(sb);
     }
 }
 

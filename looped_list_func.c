@@ -12,75 +12,70 @@
 
 #include "push_swap.h"
 
-void ft_swap(int *s)
+void ft_swap_head_stack(t_stack *s)
 {
     int tmp;
 
-    tmp = s[0];
-    s[0] = s[1];
-    s[1] = tmp;
+    tmp = s->stack;
+    s->stack = s->next->stack;
+    s->next->stack = tmp;
 }
 
                     // if pop (-1) stack empty
-int ft_pop(t_stack *s)
+int ft_pop(t_stack *s, int size)
 {
     int poped;
 
-    if (s->size == 0)
-        return ((int)NULL);
-    poped = *s->top;
-    s->top++;
-    s->size--;
+    if (size == 0)
+        return (0);
+    poped = s->stack;
+    s = s->next;
+    size--;
     return (poped);
 }
 
-void ft_push(t_stack *s, int data)
+void ft_push(t_stack *s, int data, int size)
 {
-    s->top--;
-    *s->top = data;
-    s->size++;
+    t_stack     *add;
+    int         tmp;
+
+    add = malloc(sizeof(t_stack));
+    if (!add)
+        return ;
+    tmp = s->stack;
+    s->stack = data;
+    add->stack = tmp;
+    add->next = s;
+    s = add;
+    size++;
 }
 
-void ft_shift(t_stack *s)
+void ft_shift_up(t_stack *s, int size)
 {
     int i;
+    t_stack *h;
     int tmp;
-    int new_i;
-    int last_index;
 
-    i = 0;
-    new_i = 0;
-    last_index = 0;
-    tmp = s->top[0];
-    while (i < s->size)
+    tmp = s->stack;
+    h = s;
+    while (h->next)
     {
-        // if ((s->top + i) > s->index_last)
-            last_index = 1;
-        if (last_index == 1)
-        {
-            // s->index_first[new_i] = s->index_first[new_i + 1];
-            new_i++;
-        }
-        else
-            s->top[i] = s->top[i + 1];
-        i++;
+        h->stack = h->next->stack;
+        h = h->next;
     }
-    if (last_index == 1)
-        // s->index_first[new_i - 1] = tmp;
-    // else
-        s->top[i - 1] = tmp;
+    h->stack = tmp;
 }
                     // TODO: Need to be fixed
 void ft_shift_down(t_stack *s)
 {
     int i;
     int tmp;
-    int new_i;
-    int last_index;
+    // int new_i;
+    // int last_index;
 
     i = s->size;
-    new_i = 0;
-    last_index = 0;
+    // new_i = 0;
+    // last_index = 0;
     tmp = s->top[0];
     while (i > 0)
     {

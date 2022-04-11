@@ -12,19 +12,46 @@
 
 #include "push_swap.h"
 
-int    *cp_stack(int *st, int size)
+t_stack *stack_to_list(int *st, int size)
 {
-    int *stack;
-    int index;
+    t_stack *d;
+    t_stack *head;
+    int iter;
 
-    index = size;
-    stack = malloc(sizeof(int) * size);
-    if (!stack)
+    iter = 1;
+    d = malloc(sizeof(t_stack));
+    if (!d)
         return (NULL);
-    while (index-- > 0)
-        stack[index] = st[index];
-    return (stack);
+    d->stack = st[0];
+    head = d->next;
+    while(size < iter)
+    {
+        head = malloc(sizeof(t_stack));
+        if (!d)
+            return (NULL);
+        head->stack = st[iter++];
+        head = head->next;
+    }
+    return (d);
 }
+
+// t_stack *cp_stack(int *st, int size)
+// {
+//     int index;
+//     t_stack *data;
+
+//     index = size;
+//     data = malloc(sizeof(t_stack));
+//     if (!data)
+//         return (NULL);
+//     data->top = malloc(sizeof(int) * size);
+//     if (!data->top)
+//         return (NULL);
+//     data->size = size;
+//     while (index-- > 0)
+//         data->top[index] = st[index];
+//     return (data);
+// }
 
                 /*
                     main {push_swap}
@@ -68,7 +95,7 @@ int main(int ac, char **av)
         stack_in = set_stack(&av[1], size);
         check_all(&av[1], stack_in, size, 0);
     }
-    // p_stack(stack_in, size);
+    p_stack(stack_in, size);
     sort_stack(stack_in, size);
     free(stack_in);
     return (EXIT_SUCCESS); 

@@ -39,8 +39,9 @@
                          */
 typedef struct stacks
 {
-        int     size;
-        int     *top;
+        int             stack;
+        struct stacks   *next;
+
 }               t_stack;
 
 /********************** TORM:*********************/
@@ -55,9 +56,10 @@ int     ft_pop(t_stack *s);
 void    ft_push(t_stack *s, int data);
 void    ft_shift_down(t_stack *s);
 void    ft_shift(t_stack *s);
-void    ft_swap(int *s);
+void    ft_swap_head_stack(t_stack *s);
 
-int     *cp_stack(int *st, int size);
+t_stack *stack_to_list(int *st, int size);
+// t_stack *cp_stack(int *st, int size);//, t_stack *data);
 void    cheak_arg(char *av, int size);
 int     valid_cote(char *str);
 void    check_all(char **str, int *stack_in, int size, int status);
