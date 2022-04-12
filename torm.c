@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-/************************ TORM:************************/
+/************************ TORM: ************************/
 void p_stack(int *stack, int count)
 {
     int i = 0;
@@ -15,16 +15,13 @@ void p_stack(int *stack, int count)
 
 void    p_loop(t_stack *s)
 {
-    t_stack *h;
-
-    h = s;
     int i = 0;
-    while (h)
+    while (i < s->size)
     {
-        printf("|%d|\n", h->stack);
-        h = h->next;
+        printf("|%d|\n", s->data[i]);
         i++;
     }
+    
     printf("\n\t\tsize\t{%d}\n", i);
 }
 /******************************************************/

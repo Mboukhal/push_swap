@@ -12,63 +12,51 @@
 
 #include "push_swap.h"
 
-static void    ft_bzero_int(int *s, int size)
-{
-    int i;
+// static void    ft_bzero_int(int *s, int size)
+// {
+//     int i;
     
-    i = 0;
-    while (i < size)
-        s[i++] = 0; 
+//     i = 0;
+//     while (i < size)
+//         s[i++] = 0; 
+// }
+
+t_stack *init_stack(int *stack, int size, int status)
+{
+    t_stack *set;
+    int     i;
+
+    set = malloc(sizeof(t_stack));
+    set->data = malloc(sizeof(int) * size);
+    i = -1;
+    set->size = size;
+    if (status == 1)
+        while (i++ < size)
+            set->data[i] = stack[i];
+    else
+        while (i++ < size)
+            set->data[i] = 0;
+    return (set);
 }
 
 void    sort_stack(int *stack, int size)
 {
     t_stack    *sa;
-    // t_stack    *sb;
-    int             zero[size];
+    t_stack    *sb;
 
-    ft_bzero_int(zero, size);
-    sa = stack_to_list(stack, size);
-    // sb = cp_stack(zero, size);
-    
-    // p_stack(sa->top, sa->size);
+    sa = init_stack(stack, size, 1);
+    sb = init_stack(stack, size, 0);
+    p_loop(sa);
     /*##############################################
     #               execute cmd and algo
     ################################################*/
     
-    printf("----------------\n");
-    // p_loop(sa);
-    printf("----------------\n");
 
-    // int l = ft_pop(sa);
-    // int r = ft_pop(sa);
-    // r = ft_pop(sa);
-    // r = ft_pop(sa);
-    // r = ft_pop(sa);
-    // r = ft_pop(sa);
-    // r = ft_pop(sa);
-    printf("--------------dfg--\n");
-    // printf("|%d|\n", l);
-    // printf("|%d|\n", r);
-    printf("-----------dfg-----\n");
-    // ft_push();
-    // pa_pb(sa, sb, PB);
-    // pa_pb(sa, sb, PB);
-    // pa_pb(sa, sb, PA);
-
-    p_loop(sa);
-    printf("----------------\n");
-    // p_loop(sb);
     
 
     /*##############################################*/
-
-    while (sa)
-    {
-        free(sa);
-        sa = sa->next;
-    }
-    // free(sb->top);
-    // free(sb);
+    free(sa->data);
     free(sa);
+    free(sb->data);
+    free(sb);
 }

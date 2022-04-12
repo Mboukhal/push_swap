@@ -6,51 +6,34 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:50:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/07 02:05:51 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/12 17:24:35 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *stack_to_list(int *st, int size)
-{
-    t_stack *d;
-    t_stack *head;
-    int iter;
-
-    iter = 1;
-    d = malloc(sizeof(t_stack));
-    if (!d)
-        return (NULL);
-    d->stack = st[0];
-    head = d->next;
-    while(size < iter)
-    {
-        head = malloc(sizeof(t_stack));
-        if (!d)
-            return (NULL);
-        head->stack = st[iter++];
-        head = head->next;
-    }
-    return (d);
-}
-
-// t_stack *cp_stack(int *st, int size)
+// t_stack *stack_to_list(int *st, int size)
 // {
-//     int index;
-//     t_stack *data;
+//     t_stack *d;
+//     t_stack *head;
+//     int iter;
 
-//     index = size;
-//     data = malloc(sizeof(t_stack));
-//     if (!data)
+//     iter = 1;
+//     d = malloc(sizeof(t_stack));
+//     if (!d)
 //         return (NULL);
-//     data->top = malloc(sizeof(int) * size);
-//     if (!data->top)
-//         return (NULL);
-//     data->size = size;
-//     while (index-- > 0)
-//         data->top[index] = st[index];
-//     return (data);
+//     head = d;
+//     d->stack = st[0];
+//     while(size > iter)
+//     {
+//         d = d->next;
+//         d = malloc(sizeof(t_stack));
+//         if (!d)
+//             return (NULL);
+//         d->stack = st[iter++];
+//         printf("== |%d|\n", d->stack);
+//     }
+//     return (head);
 // }
 
                 /*
