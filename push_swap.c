@@ -6,35 +6,11 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:50:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 00:38:54 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 13:59:29 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// t_stack *stack_to_list(int *st, int size)
-// {
-//     t_stack *d;
-//     t_stack *head;
-//     int iter;
-
-//     iter = 1;
-//     d = malloc(sizeof(t_stack));
-//     if (!d)
-//         return (NULL);
-//     head = d;
-//     d->stack = st[0];
-//     while(size > iter)
-//     {
-//         d = d->next;
-//         d = malloc(sizeof(t_stack));
-//         if (!d)
-//             return (NULL);
-//         d->stack = st[iter++];
-//         printf("== |%d|\n", d->stack);
-//     }
-//     return (head);
-// }
 
                 /*
                     main {push_swap}
@@ -43,7 +19,6 @@
                         - cheak for duplicate value
                         - __sort_values__ 
                 */
-
 int    *cheak_set_cotes(int *size, char *cote)
 {
     char    **str;
@@ -80,7 +55,6 @@ int main(int ac, char **av)
         stack_in = set_stack(&av[1], size);
         check_all(&av[1], stack_in, size, 0);
     }
-    // p_stack(stack_in, size);
     sort_stack(stack_in, size);
     free(stack_in);
     return (EXIT_SUCCESS); 

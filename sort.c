@@ -12,14 +12,16 @@
 
 #include "push_swap.h"
 
-// static void    ft_bzero_int(int *s, int size)
-// {
-//     int i;
-    
-//     i = 0;
-//     while (i < size)
-//         s[i++] = 0; 
-// }
+int is_sorted(t_stack *s)
+{
+    int i;
+
+    i = 0;
+    while (i++ <= s->size)
+        if (s->data[i - 1] > s->data[i])
+            return(0);
+    return(1);
+}
 
 t_stack *init_stack(int *stack, int size, int status)
 {
@@ -27,10 +29,14 @@ t_stack *init_stack(int *stack, int size, int status)
     int     i;
 
     set = malloc(sizeof(t_stack));
+    if (!set)
+        return (NULL);
     i = -1;
     if (status == 1)
     {
         set->data = malloc(sizeof(int) * size);
+        if (!set->data)
+            return (NULL);
         set->size = size;
         while (i++ < size)
             set->data[i] = stack[i];
@@ -44,23 +50,16 @@ void    sort_stack(int *stack, int size)
 {
     t_stack    *sa;
     t_stack    *sb;
-    
+
     sa = init_stack(stack, size, 1);
     sb = init_stack(stack, size, 0);
-    /*##############################################
-    #               execute cmd and algo
-    ################################################*/
-    // p_loop(sa);
-    // p_loop(sb);
-    /*##############################################*/
-
     algo(sa, sb);
-
-    /*##############################################*/
     if (sa->size > 0)
         free(sa->data);
-    free(sa);
+    if (!sa)
+        free(sa);
     if (sb->size > 0)
         free(sb->data);
-    free(sb);
+    if (!sb)
+        free(sb);
 }

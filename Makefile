@@ -6,29 +6,26 @@
 #    By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 12:49:36 by mboukhal          #+#    #+#              #
-#    Updated: 2022/04/13 00:54:11 by mboukhal         ###   ########.fr        #
+#    Updated: 2022/04/13 14:00:10 by mboukhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 .DEFAULT_GOAL		= all
 NAME				= push_swap
-LIBFT_PHAT			= libft/
-CFILES				= torm.c push_swap.c error_ps.c stack_set.c \
-					 cote_ps.c sort.c list_func.c instraction.c \
-					 algo.c sort_min.c
+CFILES				= torm.c push_swap.c error_ps.c stack_set.c 	\
+					 cote_ps.c sort.c list_func.c instraction.c 	\
+					 algo.c sort_min.c ft_atoi.c ft_itoa.c ft_put.c \
+					 ft_split.c
 CFLAGS				= -Wall -Wextra -Werror 
-LIBFT_MAKE 			= make $@ -C $(LIBFT_PHAT)
 
 OBJS			= $(CFILES:.c=.o)
 
 clean:
 	@$(RM) -rf $(OBJS)
-	@# $(LIBFT_MAKE)
 
 fclean: clean
 	@$(RM) -rf $(NAME)
-	@# $(LIBFT_MAKE)
 
 re: fclean all
 
@@ -36,8 +33,7 @@ re: fclean all
 	@$(CC) $(CFLAGS) -c $< 
 
 $(NAME):$(OBJS)
-	@# make -C $(LIBFT_PHAT)
-	@$(CC) -o $(NAME) $(OBJS) $(LIBFT_PHAT)ft_*.o -g -fsanitize=address
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -g -fsanitize=address
 
 
 test: re clean 

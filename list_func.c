@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 00:51:46 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 00:02:14 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 12:36:20 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,13 @@ void ft_push(t_stack *s, int push)
     int *tmp;
     int i;
 
-    if (s->size == 0)
-    {
-        tmp = malloc(sizeof(int));
-        s->size = 1;
-        tmp[0] = push; 
-    }
-    else
-    {
-        s->size++;
-        tmp = malloc(sizeof(int) * s->size);
-        if (!tmp)
+    s->size++;
+    tmp = malloc(sizeof(int) * s->size);
+    if (!tmp)
             return ;
-        tmp[0] = push;
+    tmp[0] = push; 
+    if (s->size > 1)
+    {
         i = -1;
         while (i++ < s->size)
             tmp[i + 1] = s->data[i];

@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:07:41 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 00:17:28 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 13:49:16 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void    ra_rb_rr(t_stack *sa,t_stack *sb, int status)
         ft_shift_up(sb);
         write(1, "rr\n", 3);
     }
-}
-    
+}   
 
 void    rra_rrb_rrr(t_stack *sa,t_stack *sb, int status)
 {

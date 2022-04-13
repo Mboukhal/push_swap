@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 00:45:31 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 01:21:29 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 12:46:01 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,7 @@
 *   sorte five element or less hard coded
 */
 
-// int get_min(t_stack *s)
-// {
-//     int min;
-//     int i;
-
-//     i = 1;
-//     min = s->data[0];
-//     while (i < s->size)
-//     {
-//         if (min > s->data[i])
-//             min = s->data[i];
-//         i++;
-//     }
-//     return(min);
-// }
-
-int get_next_min(t_stack *s, int min)
+static int get_next_min(t_stack *s, int min)
 {
     int i;
     int m;
@@ -50,13 +34,74 @@ int get_next_min(t_stack *s, int min)
     return (m);
 }
 
-void    main_sort_min(t_stack *sa)
-{
-    int min;
-    int next_min;
 
-    // min = get_min(sa);
-    min = get_next_min(sa, INT_MIN);
-    next_min = get_next_min(sa, min);
-    // printf("|%d| |%d|\n", min, next_min);
+static void    sort_3(int *min, t_stack *s)
+{
+    if (s->data[0] == min[0] && s->data[1] != min[1])
+    {
+        rra_rrb_rrr(s, NULL, RRA);
+        sa_sb_ss(s, NULL, SA);
+    }
+    else if (s->data[0] == min[1])
+    {
+        if (s->data[1] == min[0])
+			sa_sb_ss(s, NULL, SA);
+		else
+			rra_rrb_rrr(s, NULL, RRA);
+    }
+    else
+    {
+        if (s->data[1] == min[0])
+			ra_rb_rr(s, NULL, RA);
+		else if (s->data[1] == min[1])
+		{
+            sa_sb_ss(s, NULL, SA);
+            rra_rrb_rrr(s, NULL, RRA);
+        }
+    }
+}
+
+static void    sort_4(int *min, t_stack *sa, t_stack *sb)
+{
+    while (sa->data[0] != min[0])
+        ra_rb_rr(sa, NULL, RA);
+    pa_pb(sa, sb, PB);
+    min[0] = min[1];
+    min[1] = get_next_min(sa, min[0]);
+    if (!is_sorted(sa))
+        sort_3(min, sa);
+    while (sb->size)
+        pa_pb(sa, sb, PA);
+}
+
+static void    sort_5(int *min, t_stack *sa, t_stack *sb)
+{
+    while (sa->data[0] == min[0] || sa->data[0] == min[1])
+        pa_pb(sa, sb, PB);
+    min[0] = get_next_min(sa, INT_MIN);
+    min[1] = get_next_min(sa, min[0]);
+    if (!is_sorted(sa))
+        sort_3(min, sa);
+    else
+        ra_rb_rr(sa, NULL, RA);
+    while (sb->size)
+        pa_pb(sa, sb, PA);
+    if (!is_sorted(sa))
+        sa_sb_ss(sa, NULL, SA);
+}
+
+void    main_sort_min(t_stack *sa, t_stack *sb)
+{
+    int min[2];
+
+    min[0] = get_next_min(sa, INT_MIN);
+    min[1] = get_next_min(sa, min[0]);
+    if (sa->size == 2)
+        sa_sb_ss(sa, NULL, SA);
+    if (sa->size == 3)
+        sort_3(min, sa);
+    if (sa->size == 4)
+        sort_4(min, sa, sb);
+    if (sa->size == 5)
+        sort_5(min, sa, sb);
 }
