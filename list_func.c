@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 00:51:46 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 23:06:02 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 23:18:52 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,16 @@ void ft_push(t_stack *s, int push)
     if (!tmp)
             return ;
     tmp[0] = push; 
-    // if (s->size > 1)
-    // {
+    if (s->size > 1)
+    {
         i = 0;
         while (i < s->size)
         {
             tmp[i + 1] = s->data[i];
             i++;
         }
-        // if (s->size > 2)
-        //     free(s->data);
-    // }
+        // free(s->data);
+    }
     s->data = tmp;
 }
 
