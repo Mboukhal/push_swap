@@ -16,10 +16,13 @@ void p_stack(int *stack, int count)
 void    p_loop(t_stack *s)
 {
     int i = 0;
-    while (i < s->size)
+    if (s->size != 0)
     {
-        printf("|%d|\n", s->data[i]);
-        i++;
+        while (i < s->size)
+        {
+            printf("|%d|\n", s->data[i]);
+            i++;
+        }
     }
     
     printf("\n\t\tsize\t{%d}\n", i);

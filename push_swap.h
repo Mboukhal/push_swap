@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/12 22:12:10 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 00:17:07 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ void    p_loop(t_stack *s);
 /*************************************************/
 
 
-// int     ft_pop(t_stack *s, int size);
-void    ft_push(t_stack *s, int data, int size);
-void    ft_shift_down(t_stack *s, int size);
-void    ft_shift_up(t_stack *s);//, int size);
+int     ft_pop(t_stack *s);
+void    ft_push(t_stack *s, int push);
+void    ft_shift_down(t_stack *s);
+void    ft_shift_up(t_stack *s);
 void    ft_swap_head_stack(t_stack *s);
 
 t_stack *stack_to_list(int *st, int size);
@@ -70,10 +70,11 @@ int     cheak_isdup(int *stack,int size);
 int     cheak_limit(char **args);
 void    sort_stack(int *stack, int size);
 
-// t_stack *cp_stack(int *st, int size);//, t_stack *data);
-// void    ra_rb_rr(t_stack *sa,t_stack *sb, int status);
-// void    rra_rrb_rrr(t_stack *sa,t_stack *sb, int status);
-// void    sa_sb_ss(t_stack *sa, t_stack *sb, int status);
-// void    pa_pb(t_stack *sa, t_stack *sb, int status);
+void algo(t_stack *sa, t_stack *sb);
+
+void    ra_rb_rr(t_stack *sa,t_stack *sb, int status);
+void    rra_rrb_rrr(t_stack *sa,t_stack *sb, int status);
+void    sa_sb_ss(t_stack *sa, t_stack *sb, int status);
+void    pa_pb(t_stack *sa, t_stack *sb, int status);
 
 #endif // PUSH_SWAP_H

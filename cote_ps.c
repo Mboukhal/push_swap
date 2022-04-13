@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 22:02:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/12 22:16:41 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:42:40 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ int    valid_cote(char *str)
     return (0);
 }
 
-                            /*
-                                TODO:
-                                need to be tested
-                            */
 static void check_sorted(int size, int *stack)
 {
     int i;

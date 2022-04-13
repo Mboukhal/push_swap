@@ -27,15 +27,16 @@ t_stack *init_stack(int *stack, int size, int status)
     int     i;
 
     set = malloc(sizeof(t_stack));
-    set->data = malloc(sizeof(int) * size);
     i = -1;
-    set->size = size;
     if (status == 1)
+    {
+        set->data = malloc(sizeof(int) * size);
+        set->size = size;
         while (i++ < size)
             set->data[i] = stack[i];
+    }
     else
-        while (i++ < size)
-            set->data[i] = 0;
+        set->size = 0;
     return (set);
 }
 
@@ -46,17 +47,20 @@ void    sort_stack(int *stack, int size)
 
     sa = init_stack(stack, size, 1);
     sb = init_stack(stack, size, 0);
-    p_loop(sa);
     /*##############################################
     #               execute cmd and algo
     ################################################*/
-    
-
-    
-
+    // p_loop(sa);
+    // p_loop(sb);
     /*##############################################*/
-    free(sa->data);
+
+    algo(sa, sb);
+    
+    /*##############################################*/
+    if (sa->size > 0)
+        free(sa->data);
     free(sa);
-    free(sb->data);
+    if (sb->size > 0)
+        free(sb->data);
     free(sb);
 }
