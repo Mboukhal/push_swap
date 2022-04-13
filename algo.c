@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 00:14:16 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 00:39:25 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 00:53:32 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void algo(t_stack *sa, t_stack *sb)
 {
-    p_loop(sa);
-    p_loop(sb);
+    (void)sb;
+    if (sa->size <= 5)
+        main_sort_min(sa);
     
 }

@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 00:17:07 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 01:11:59 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 # include "libft/libft.h"
 
 # define SA     0
@@ -70,7 +71,8 @@ int     cheak_isdup(int *stack,int size);
 int     cheak_limit(char **args);
 void    sort_stack(int *stack, int size);
 
-void algo(t_stack *sa, t_stack *sb);
+void    algo(t_stack *sa, t_stack *sb);
+void    main_sort_min(t_stack *sa);
 
 void    ra_rb_rr(t_stack *sa,t_stack *sb, int status);
 void    rra_rrb_rrr(t_stack *sa,t_stack *sb, int status);
