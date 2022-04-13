@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:50:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 00:09:29 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 00:38:54 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
                         - __sort_values__ 
                 */
 
-int    *cheak_set_cotes(int size, char *cote)
+int    *cheak_set_cotes(int *size, char *cote)
 {
     char    **str;
     int     i;
@@ -52,17 +52,19 @@ int    *cheak_set_cotes(int size, char *cote)
 
 
     str = ft_split(cote, ' ');
-    size = 0;
-    while (str[size++]);
-    size--;
-    stack = set_stack(str, size);
-    check_all(str, stack, size, 1);
+    *size = 0;
+    while (str[(*size)++]);
+    (*size)--;
+    stack = set_stack(str, (*size));
+    check_all(str, stack, (*size), 1);
     i = 0;
     while (str[i])
         free(str[i++]);
     free(str);
     return (stack);
 }
+
+
 int main(int ac, char **av)
 {
     int     size;
@@ -72,7 +74,7 @@ int main(int ac, char **av)
     if (ac < 2)
         return (EXIT_FAILURE);
     else if (ac == 2)
-        stack_in = cheak_set_cotes(size, av[1]);
+        stack_in = cheak_set_cotes(&size, av[1]);
     else
     {
         stack_in = set_stack(&av[1], size);

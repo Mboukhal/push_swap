@@ -44,7 +44,7 @@ void    sort_stack(int *stack, int size)
 {
     t_stack    *sa;
     t_stack    *sb;
-
+    
     sa = init_stack(stack, size, 1);
     sb = init_stack(stack, size, 0);
     /*##############################################
@@ -55,7 +55,7 @@ void    sort_stack(int *stack, int size)
     /*##############################################*/
 
     algo(sa, sb);
-    
+
     /*##############################################*/
     if (sa->size > 0)
         free(sa->data);
