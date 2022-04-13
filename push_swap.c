@@ -6,19 +6,12 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:50:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 13:59:29 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 14:13:52 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-                /*
-                    main {push_swap}
-                        - cheak for integer value and limit
-                        - set satck_a as integer list 
-                        - cheak for duplicate value
-                        - __sort_values__ 
-                */
 int    *cheak_set_cotes(int *size, char *cote)
 {
     char    **str;
@@ -38,7 +31,6 @@ int    *cheak_set_cotes(int *size, char *cote)
     free(str);
     return (stack);
 }
-
 
 int main(int ac, char **av)
 {

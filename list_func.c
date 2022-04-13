@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 00:51:46 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 12:36:20 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 23:06:02 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,26 @@ void ft_swap_head_stack(t_stack *s)
 }
 
                     // if pop (-1) stack empty
-int ft_pop(t_stack *s)
+void ft_pop(t_stack *s, int *poped)
 {
-    int poped;
     int *tmp;
     int i;
 
     if (s->size == 0)
-        return (0);
-    poped = s->data[0];
+        return ;
+    *poped = s->data[0];
     s->size--;
-    tmp = malloc(sizeof(int) * (s->size));
+    tmp = malloc(sizeof(int) * s->size);
     if (!tmp)
-        exit (EXIT_FAILURE);
-    i = -1;
-    while (i++ < s->size)
+        return ;
+    i = 0;
+    while (i < s->size)
+    {
         tmp[i] = s->data[i + 1];
+        i++;
+    }
     free(s->data);
     s->data = tmp;
-    return (poped);
 }
 
 void ft_push(t_stack *s, int push)
@@ -53,13 +54,17 @@ void ft_push(t_stack *s, int push)
     if (!tmp)
             return ;
     tmp[0] = push; 
-    if (s->size > 1)
-    {
-        i = -1;
-        while (i++ < s->size)
+    // if (s->size > 1)
+    // {
+        i = 0;
+        while (i < s->size)
+        {
             tmp[i + 1] = s->data[i];
-        free(s->data);
-    }
+            i++;
+        }
+        // if (s->size > 2)
+        //     free(s->data);
+    // }
     s->data = tmp;
 }
 

@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 00:45:31 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 12:46:01 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:30:14 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int get_next_min(t_stack *s, int min)
     }
     return (m);
 }
-
 
 static void    sort_3(int *min, t_stack *s)
 {
@@ -63,31 +62,32 @@ static void    sort_3(int *min, t_stack *s)
 
 static void    sort_4(int *min, t_stack *sa, t_stack *sb)
 {
-    while (sa->data[0] != min[0])
-        ra_rb_rr(sa, NULL, RA);
-    pa_pb(sa, sb, PB);
-    min[0] = min[1];
+	while (sa->size == 4)
+		if (sa->data[0] == min[0])
+            pa_pb(sa, sb, PB);
+		else
+            ra_rb_rr(sa, sb, RA);
+    min[0] = get_next_min(sa, INT_MIN);
     min[1] = get_next_min(sa, min[0]);
-    if (!is_sorted(sa))
-        sort_3(min, sa);
-    while (sb->size)
+    sort_3(min, sa);
+	while (sb->size)
         pa_pb(sa, sb, PA);
+    
 }
 
 static void    sort_5(int *min, t_stack *sa, t_stack *sb)
 {
-    while (sa->data[0] == min[0] || sa->data[0] == min[1])
-        pa_pb(sa, sb, PB);
+
+    while (sa->size == 5)
+		if (sa->data[0] == min[0])
+            pa_pb(sa, sb, PB);
+		else
+            ra_rb_rr(sa, sb, RA);
     min[0] = get_next_min(sa, INT_MIN);
     min[1] = get_next_min(sa, min[0]);
-    if (!is_sorted(sa))
-        sort_3(min, sa);
-    else
-        ra_rb_rr(sa, NULL, RA);
-    while (sb->size)
+    sort_4(min, sa, sb);
+	while (sb->size)
         pa_pb(sa, sb, PA);
-    if (!is_sorted(sa))
-        sa_sb_ss(sa, NULL, SA);
 }
 
 void    main_sort_min(t_stack *sa, t_stack *sb)
@@ -98,10 +98,10 @@ void    main_sort_min(t_stack *sa, t_stack *sb)
     min[1] = get_next_min(sa, min[0]);
     if (sa->size == 2)
         sa_sb_ss(sa, NULL, SA);
-    if (sa->size == 3)
+    else if (sa->size == 3)
         sort_3(min, sa);
-    if (sa->size == 4)
+    else if (sa->size == 4)
         sort_4(min, sa, sb);
-    if (sa->size == 5)
+    else if (sa->size == 5)
         sort_5(min, sa, sb);
 }
