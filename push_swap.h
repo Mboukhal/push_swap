@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 23:03:45 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/15 14:54:47 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ void	ft_putnbr_fd(int n, int fd);
 
 //              stack operations
 void    ft_pop(t_stack *s, int *poped);
-void    ft_push(t_stack *s, int push);
+void    ft_push(t_stack *s, int *push);
 void    ft_shift_down(t_stack *s);
 void    ft_shift_up(t_stack *s);
-void    ft_swap_head_stack(t_stack *s);
+void	ft_swap_int(int *a, int *b);
+// void    ft_swap_head_stack(t_stack *s);
 
 //              check and initialisation
 t_stack *stack_to_list(int *st, int size);
@@ -60,7 +61,7 @@ int     cheak_limit(char **args);
 void    sort_stack(int *stack, int size);
 
 //              sorting
-void    algo(t_stack *sa, t_stack *sb);
+void	stack_to_index(t_stack *s);
 void    main_sort_min(t_stack *sa, t_stack *sb);
 void    main_sort_big(t_stack *sa, t_stack *sb);
 int     is_sorted(t_stack *s);
