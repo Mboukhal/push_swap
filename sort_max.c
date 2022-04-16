@@ -6,18 +6,19 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:20:11 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/16 02:01:49 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/16 17:41:07 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_to_index(t_stack *s)
+int	*tmp_func(t_stack *s)
 {
-	int i;
-	int	tmp[s->size];
-	int ss;
+	int	*tmp;
+	int	ss;
+	int	i;
 
+	tmp = malloc(sizeof(int) * s->size);
 	ss = s->size;
 	i = -1;
 	while (i++ < ss - 1)
@@ -30,6 +31,16 @@ void	stack_to_index(t_stack *s)
 				ft_swap_int(&tmp[i], &tmp[i + 1]);
 		ss--;
 	}
+	return (tmp);
+}
+
+void	stack_to_index(t_stack *s)
+{
+	int	i;
+	int	*tmp;
+	int	ss;
+
+	tmp = tmp_func(s);
 	ss = 0;
 	while (ss < s->size)
 	{
@@ -44,9 +55,10 @@ void	stack_to_index(t_stack *s)
 		}
 		ss++;
 	}
+	free(tmp);
 }
 
-void    main_sort_big(t_stack *sa, t_stack *sb)
+void	main_sort_big(t_stack *sa, t_stack *sb)
 {
 	int	i;
 	int	num;
@@ -54,14 +66,12 @@ void    main_sort_big(t_stack *sa, t_stack *sb)
 
 	stack_to_index(sa);
 	i = 0;
-	// p_loop(sa);
-	while (!is_sorted(sa) && i != 1)
+	while (!is_sorted(sa))
 	{
 		size = sa->size;
 		while (size--)
 		{
 			num = *(sa->data);
-			// printf("\t\t|%d| |%d|\n", num, sa->size);
 			if ((num >> i & 1) == 1)
 				ra_rb_rr(sa, sb, RA);
 			else

@@ -6,63 +6,62 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 22:02:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/13 01:04:47 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/16 23:30:13 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int    valid_cote(char *str)
+int	valid_cote(char *str)
 {
-    int iter;
+	int	iter;
 
-    iter = 0;
-    while (str[iter])
-    {
-        if (!(str[iter] == ' ' || str[iter] == '-' ||
-            (str[iter] <= '9' && str[iter] >= '0')) )
-            cheak_isint(&str);
-        iter++;
-    }
-    return (0);
+	iter = 0;
+	while (str[iter])
+	{
+		if (!(str[iter] == ' ' || str[iter] == '-'
+				|| (str[iter] <= '9' && str[iter] >= '0')))
+			cheak_isint(&str);
+		iter++;
+	}
+	return (0);
 }
 
-static void check_sorted(int size, int *stack)
+static void	check_sorted(int size, int *stack)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i++ <= size)
-        if (stack[i - 1] > stack[i])
-            break ;
-    if (i == size)
-    {
-        ft_putstr_fd("Error\n\t", STDERR_FILENO);
-        ft_putstr_fd("Stack entered already sorted !!\n", STDERR_FILENO);
-        exit(EXIT_FAILURE);
-    }
+	i = 0;
+	while (i++ <= size)
+		if (stack[i - 1] > stack[i])
+			break ;
+	if (i == size)
+	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		exit (EXIT_FAILURE);
+	}
 }
 
-void    check_all(char **str, int *stack_in, int size, int status)
+void	check_all(char **str, int *stack_in, int size, int status)
 {
-    int result;
-    int i;
+	int	result;
+	int	i;
 
-    result = EXIT_SUCCESS;
-    result = cheak_isint(str);
-    if (result == EXIT_SUCCESS)
-        result = cheak_limit(str);
-    if (result == EXIT_SUCCESS)
-       result = cheak_isdup(stack_in, size);
-    if (status == 1 && result == EXIT_FAILURE)
-    {
-        i = 0;
-        while (str[i])
-            free(str[i++]);
-        free(str);
-        exit (EXIT_FAILURE);
-    }
-    if (status == 0 && result == EXIT_FAILURE)
-        exit(EXIT_FAILURE);
-    check_sorted(size, stack_in);
+	result = EXIT_SUCCESS;
+	result = cheak_isint(str);
+	if (result == EXIT_SUCCESS)
+		result = cheak_limit(str);
+	if (result == EXIT_SUCCESS)
+		result = cheak_isdup(stack_in, size);
+	if (status == 1 && result == EXIT_FAILURE)
+	{
+		i = 0;
+		while (str[i])
+			free(str[i++]);
+		free(str);
+		exit (EXIT_FAILURE);
+	}
+	if (status == 0 && result == EXIT_FAILURE)
+		exit(EXIT_FAILURE);
+	check_sorted(size, stack_in);
 }
