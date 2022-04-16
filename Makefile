@@ -6,7 +6,7 @@
 #    By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 12:49:36 by mboukhal          #+#    #+#              #
-#    Updated: 2022/04/15 14:54:02 by mboukhal         ###   ########.fr        #
+#    Updated: 2022/04/15 22:06:36 by mboukhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 .DEFAULT_GOAL		= all
 NAME				= push_swap
 CFILES				= torm.c push_swap.c error_ps.c sort_op.c		\
-					 cote_ps.c sort.c list_func.c instraction.c 	\
+					 cote_ps.c sort_max.c list_func.c instraction.c 	\
 					 sort_min.c ft_atoi.c ft_itoa.c ft_put.c ft_split.c 
 CFLAGS				= -Wall -Wextra -Werror 
 
