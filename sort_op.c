@@ -65,9 +65,11 @@ void	sort_stack(int *stack, int size)
 		main_sort_min(sa, sb);
 	else
 		main_sort_big(sa, sb);
-	free(sa->data);
+	if (sb->size > 0)
+		free(sa->data);
 	free(sa);
-	free(sb->data);
+	if (sb->size > 0)
+		free(sb->data);
 	free(sb);
 }
 

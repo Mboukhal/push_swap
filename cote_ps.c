@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 22:02:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/16 23:30:13 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/17 01:11:48 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ static void	check_sorted(int size, int *stack)
 		if (stack[i - 1] > stack[i])
 			break ;
 	if (i == size)
-	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
 		exit (EXIT_FAILURE);
-	}
 }
 
 void	check_all(char **str, int *stack_in, int size, int status)
