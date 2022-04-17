@@ -6,12 +6,11 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 13:07:05 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/16 23:22:34 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/17 13:45:19 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
 
 static int	comper_str(char *str)
 {
