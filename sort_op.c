@@ -6,36 +6,35 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:39:45 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/16 23:41:15 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:19:34 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 void	print_ins(int ins)
 {
-	if(ins == RA)
+	if (ins == RA)
 		write(1, "ra\n", 3);
-	if(ins == RB)
+	if (ins == RB)
 		write(1, "rb\n", 3);
-	if(ins == RR)
+	if (ins == RR)
 		write(1, "rr\n", 3);
-	if(ins == RRA)
+	if (ins == RRA)
 		write(1, "rra\n", 4);
-	if(ins == RRB)
+	if (ins == RRB)
 		write(1, "rrb\n", 4);
-	if(ins == RRR)
+	if (ins == RRR)
 		write(1, "rrr\n", 4);
-	if(ins == SA)
+	if (ins == SA)
 		write(1, "sa\n", 3);
-	if(ins == SB)
+	if (ins == SB)
 		write(1, "sb\n", 3);
-	if(ins == SS)
+	if (ins == SS)
 		write(1, "ss\n", 3);
-	if(ins == PA)
+	if (ins == PA)
 		write(1, "pa\n", 3);
-	if(ins == PB)
+	if (ins == PB)
 		write(1, "pb\n", 3);
 }
 
@@ -86,7 +85,7 @@ void	sort_stack(int *stack, int size)
 
 	sa = init_stack(stack, size, 1);
 	sb = init_stack(stack, size, 0);
-    free(stack);
+	free(stack);
 	sb->size_max = sa->size;
 	sa->size_max = sa->size;
 	if (sa->size <= 5)

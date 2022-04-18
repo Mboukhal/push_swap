@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 16:11:11 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:21:44 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	main_sort_big(t_stack *sa, t_stack *sb);
 int		is_sorted(t_stack *s);
 
 //              instractions
-void 	exec_instration(t_stack *sa, t_stack *sb, int ins, int print);
+void	exec_instration(t_stack *sa, t_stack *sb, int ins, int print);
 void	print_ins(int ins);
 # define PRINT_ON		1
 # define PRINT_OFF		0

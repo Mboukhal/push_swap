@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:20:11 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/16 17:41:07 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:44:53 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	stack_to_index(t_stack *s)
 void	main_sort_big(t_stack *sa, t_stack *sb)
 {
 	int	i;
-	int	num;
 	int	size;
 
 	stack_to_index(sa);
@@ -71,16 +70,15 @@ void	main_sort_big(t_stack *sa, t_stack *sb)
 		size = sa->size;
 		while (size--)
 		{
-			num = *(sa->data);
-			if ((num >> i & 1) == 1)
-				ra_rb_rr(sa, sb, RA);
+			if (*(sa->data) >> i & 1)
+				exec_instration(sa, sb, RA, PRINT_ON);
 			else
-				pa_pb(sa, sb, PB);
+				exec_instration(sa, sb, PB, PRINT_ON);
 			if (is_sorted(sa))
 				break ;
 		}
 		while (sb->size)
-			pa_pb(sa, sb, PA);
+			exec_instration(sa, sb, PA, PRINT_ON);
 		i++;
 	}
 }

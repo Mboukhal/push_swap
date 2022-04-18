@@ -6,24 +6,24 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:07:41 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 16:05:01 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:22:55 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void exec_instration(t_stack *sa, t_stack *sb, int ins, int print)
+void	exec_instration(t_stack *sa, t_stack *sb, int ins, int print)
 {
 	if (print == 1)
 		print_ins(ins);
-    if (ins >= RA && ins <= RR)
-        ra_rb_rr(sa, sb, ins);
-    if (ins >= RRA && ins <= RRR)
-        rra_rrb_rrr(sa, sb, ins);
-    if (ins >= SA && ins <= SS)
-        sa_sb_ss(sa, sb, ins);
-    if (ins == PA || ins == PB)
-        pa_pb(sa, sb, ins);
+	if (ins >= RA && ins <= RR)
+		ra_rb_rr(sa, sb, ins);
+	if (ins >= RRA && ins <= RRR)
+		rra_rrb_rrr(sa, sb, ins);
+	if (ins >= SA && ins <= SS)
+		sa_sb_ss(sa, sb, ins);
+	if (ins == PA || ins == PB)
+		pa_pb(sa, sb, ins);
 }
 
 void	ra_rb_rr(t_stack *sa, t_stack *sb, int status)
