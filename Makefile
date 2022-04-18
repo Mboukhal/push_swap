@@ -6,12 +6,12 @@
 #    By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 12:49:36 by mboukhal          #+#    #+#              #
-#    Updated: 2022/04/18 15:09:58 by mboukhal         ###   ########.fr        #
+#    Updated: 2022/04/18 16:13:38 by mboukhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-.DEFAULT_GOAL		= test
+.DEFAULT_GOAL		= all
 NAME				= push_swap
 BONUS				= checker
 CFILES				= push_swap.c error_ps.c sort_op.c ft_split.c		\
@@ -27,26 +27,26 @@ OBJS			= $(CFILES:.c=.o)
 BOBJS			= $(CFBONUS:.c=.o)
 
 clean:
-	@$(RM) -rf $(OBJS) $(BOBJS)
+	$(RM) -rf $(OBJS) $(BOBJS)
 
 fclean: clean
-	@$(RM) -rf $(NAME) $(BONUS)
+	$(RM) -rf $(NAME) $(BONUS)
 
 re: fclean all
 
 .c.o:
-	@$(CC) $(CFLAGS) -c $< 
+	$(CC) $(CFLAGS) -c $< 
 
 $(NAME):$(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -g -fsanitize=address
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -g -fsanitize=address
 
 $(BONUS):$(BOBJS)
-	@$(CC) $(CFLAGS) -o $(BONUS) $(BOBJS) -g -fsanitize=address
+	$(CC) $(CFLAGS) -o $(BONUS) $(BOBJS) -g -fsanitize=address
 	
 all: $(NAME)
 
 bonus: $(BONUS)
 
-test: all bonus clean
+# test: all bonus clean
 
 .PHONY: re fclean all clean bonus
