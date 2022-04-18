@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 11:57:51 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 14:37:11 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,23 @@ int		is_sorted(t_stack *s);
 
 //              instractions
 void	ra_rb_rr(t_stack *sa, t_stack *sb, int status);
-# define RA     0
-# define RB     1
-# define RR     2
+# define RA     2
+# define RB     3
+# define RR     4
 
 void	rra_rrb_rrr(t_stack *sa, t_stack *sb, int status);
-# define RRA     4
-# define RRB     5
-# define RRR     6
+# define RRA     5
+# define RRB     6
+# define RRR     7
 
 void	sa_sb_ss(t_stack *sa, t_stack *sb, int status);
-# define SA     7
-# define SB     8
-# define SS     9
+# define SA     8
+# define SB     9
+# define SS     10
 
 void	pa_pb(t_stack *sa, t_stack *sb, int status);
-# define PA     10
-# define PB     11
+# define PA     11
+# define PB     12
 
 //				checker
 void	sort_stack_checker(int *stack, int size);
