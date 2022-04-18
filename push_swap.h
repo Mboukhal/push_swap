@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 14:37:11 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:11:11 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-# include "get_next_line.h"
 
 typedef struct stacks
 {
@@ -27,7 +26,7 @@ typedef struct stacks
 }t_stack;
 
 //              utiles
-// size_t	ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
@@ -44,6 +43,7 @@ void	ft_shift_up(t_stack *s);
 void	ft_swap_int(int *a, int *b);
 
 //              check and initialisation
+t_stack	*init_stack(int *stack, int size, int status);
 int		*check_av(char **av, int size);
 int		*cheak_set_cotes(int *size, char *cote);
 t_stack	*stack_to_list(int *st, int size);
@@ -63,6 +63,11 @@ void	main_sort_big(t_stack *sa, t_stack *sb);
 int		is_sorted(t_stack *s);
 
 //              instractions
+void 	exec_instration(t_stack *sa, t_stack *sb, int ins, int print);
+void	print_ins(int ins);
+# define PRINT_ON		1
+# define PRINT_OFF		0
+
 void	ra_rb_rr(t_stack *sa, t_stack *sb, int status);
 # define RA     2
 # define RB     3

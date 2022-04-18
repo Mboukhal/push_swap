@@ -6,12 +6,12 @@
 #    By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 12:49:36 by mboukhal          #+#    #+#              #
-#    Updated: 2022/04/18 14:47:33 by mboukhal         ###   ########.fr        #
+#    Updated: 2022/04/18 15:09:58 by mboukhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-.DEFAULT_GOAL		= all
+.DEFAULT_GOAL		= test
 NAME				= push_swap
 BONUS				= checker
 CFILES				= push_swap.c error_ps.c sort_op.c ft_split.c		\
@@ -46,5 +46,7 @@ $(BONUS):$(BOBJS)
 all: $(NAME)
 
 bonus: $(BONUS)
+
+test: all bonus clean
 
 .PHONY: re fclean all clean bonus

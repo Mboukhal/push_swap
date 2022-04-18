@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 00:45:31 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/16 22:36:36 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:11:00 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,24 @@ static void	sort_3(int *min, t_stack *s)
 {
 	if (s->data[0] == min[0] && s->data[1] != min[1] && !is_sorted(s))
 	{
-		rra_rrb_rrr(s, NULL, RRA);
-		sa_sb_ss(s, NULL, SA);
+		exec_instration(s, NULL, RRA, PRINT_ON);
+		exec_instration(s, NULL, SA, PRINT_ON);
 	}
 	else if (s->data[0] == min[1] && !is_sorted(s))
 	{
 		if (s->data[1] == min[0])
-			sa_sb_ss(s, NULL, SA);
+			exec_instration(s, NULL, SA, PRINT_ON);
 		else
-			rra_rrb_rrr(s, NULL, RRA);
+			exec_instration(s, NULL, RRA, PRINT_ON);
 	}
 	else if (!is_sorted(s))
 	{
 		if (s->data[1] == min[0])
-			ra_rb_rr(s, NULL, RA);
+			exec_instration(s, NULL, RA, PRINT_ON);
 		else if (s->data[1] == min[1])
 		{
-			sa_sb_ss(s, NULL, SA);
-			rra_rrb_rrr(s, NULL, RRA);
+			exec_instration(s, NULL, SA, PRINT_ON);
+			exec_instration(s, NULL, RRA, PRINT_ON);
 		}
 	}
 }
@@ -69,16 +69,16 @@ static void	sort_4(t_stack *sa, t_stack *sb)
 	while (sa->size == 4 && !is_sorted(sa))
 	{
 		if (sa->data[0] == min[0])
-			pa_pb(sa, sb, PB);
+			exec_instration(sa, sb, PB, PRINT_ON);
 		else
-			ra_rb_rr(sa, sb, RA);
+			exec_instration(sa, sb, RA, PRINT_ON);
 	}
 	min[0] = get_next_min(sa, INT_MIN);
 	min[1] = get_next_min(sa, min[0]);
 	if (!is_sorted(sa))
 		sort_3(min, sa);
 	while (sb->size)
-		pa_pb(sa, sb, PA);
+		exec_instration(sa, sb, PA, PRINT_ON);
 }
 
 static void	sort_5(t_stack *sa, t_stack *sb)
@@ -90,14 +90,14 @@ static void	sort_5(t_stack *sa, t_stack *sb)
 	while (sa->size == 5)
 	{
 		if (sa->data[0] == min[0])
-			pa_pb(sa, sb, PB);
+			exec_instration(sa, sb, PB, PRINT_ON);
 		else
-			ra_rb_rr(sa, sb, RA);
+			exec_instration(sa, sb, RA, PRINT_ON);
 	}
 	if (!is_sorted(sa))
 		sort_4(sa, sb);
 	while (sb->size)
-		pa_pb(sa, sb, PA);
+		exec_instration(sa, sb, PA, PRINT_ON);
 }
 
 void	main_sort_min(t_stack *sa, t_stack *sb)

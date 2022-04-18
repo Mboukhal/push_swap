@@ -12,6 +12,33 @@
 
 #include "push_swap.h"
 
+
+void	print_ins(int ins)
+{
+	if(ins == RA)
+		write(1, "ra\n", 3);
+	if(ins == RB)
+		write(1, "rb\n", 3);
+	if(ins == RR)
+		write(1, "rr\n", 3);
+	if(ins == RRA)
+		write(1, "rra\n", 4);
+	if(ins == RRB)
+		write(1, "rrb\n", 4);
+	if(ins == RRR)
+		write(1, "rrr\n", 4);
+	if(ins == SA)
+		write(1, "sa\n", 3);
+	if(ins == SB)
+		write(1, "sb\n", 3);
+	if(ins == SS)
+		write(1, "ss\n", 3);
+	if(ins == PA)
+		write(1, "pa\n", 3);
+	if(ins == PB)
+		write(1, "pb\n", 3);
+}
+
 int	is_sorted(t_stack *s)
 {
 	int	i;
@@ -26,7 +53,7 @@ int	is_sorted(t_stack *s)
 	return (1);
 }
 
-static t_stack	*init_stack(int *stack, int size, int status)
+t_stack	*init_stack(int *stack, int size, int status)
 {
 	t_stack	*set;
 	int		i;
