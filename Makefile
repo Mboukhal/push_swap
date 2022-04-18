@@ -6,7 +6,7 @@
 #    By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 12:49:36 by mboukhal          #+#    #+#              #
-#    Updated: 2022/04/18 16:13:38 by mboukhal         ###   ########.fr        #
+#    Updated: 2022/04/18 16:14:55 by mboukhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,5 @@ $(BONUS):$(BOBJS)
 all: $(NAME)
 
 bonus: $(BONUS)
-
-# test: all bonus clean
 
 .PHONY: re fclean all clean bonus
