@@ -6,7 +6,7 @@
 #    By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 12:49:36 by mboukhal          #+#    #+#              #
-#    Updated: 2022/04/18 16:34:11 by mboukhal         ###   ########.fr        #
+#    Updated: 2022/04/18 16:50:58 by mboukhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,10 @@ re: fclean all
 	$(CC) $(CFLAGS) -c $< 
 
 $(NAME):$(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) #-g -fsanitize=address
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -g -fsanitize=address
 
 $(BONUS):$(BOBJS)
-	$(CC) $(CFLAGS) -o $(BONUS) $(BOBJS) #-g -fsanitize=address
+	$(CC) $(CFLAGS) -o $(BONUS) $(BOBJS) -g -fsanitize=address
 	
 all: $(NAME)
 
