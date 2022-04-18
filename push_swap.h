@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/17 13:47:21 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 11:57:51 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
+# include "get_next_line.h"
 
 typedef struct stacks
 {
@@ -26,7 +27,7 @@ typedef struct stacks
 }t_stack;
 
 //              utiles
-size_t	ft_strlen(const char *s);
+// size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
@@ -43,6 +44,8 @@ void	ft_shift_up(t_stack *s);
 void	ft_swap_int(int *a, int *b);
 
 //              check and initialisation
+int		*check_av(char **av, int size);
+int		*cheak_set_cotes(int *size, char *cote);
 t_stack	*stack_to_list(int *st, int size);
 void	cheak_arg(char *av, int size);
 int		valid_cote(char *str);
@@ -78,5 +81,8 @@ void	sa_sb_ss(t_stack *sa, t_stack *sb, int status);
 void	pa_pb(t_stack *sa, t_stack *sb, int status);
 # define PA     10
 # define PB     11
+
+//				checker
+void	sort_stack_checker(int *stack, int size);
 
 #endif // PUSH_SWAP_H

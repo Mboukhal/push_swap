@@ -59,6 +59,7 @@ void	sort_stack(int *stack, int size)
 
 	sa = init_stack(stack, size, 1);
 	sb = init_stack(stack, size, 0);
+    free(stack);
 	sb->size_max = sa->size;
 	sa->size_max = sa->size;
 	if (sa->size <= 5)

@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 22:02:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/17 01:11:48 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 11:53:00 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,39 @@ void	check_all(char **str, int *stack_in, int size, int status)
 	if (status == 0 && result == EXIT_FAILURE)
 		exit(EXIT_FAILURE);
 	check_sorted(size, stack_in);
+}
+
+int	*cheak_set_cotes(int *size, char *cote)
+{
+	char	**str;
+	int		i;
+	int		*stack;
+
+	str = ft_split(cote, ' ');
+	*size = 0;
+	while (str[(*size)])
+		(*size)++;
+	stack = set_stack(str, (*size));
+	check_all(str, stack, (*size), 1);
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+	return (stack);
+}
+
+int	*check_av(char **av, int size)
+{
+	int		*stack_in;
+
+	if (size < 1)
+		exit (EXIT_FAILURE);
+	else if (size == 1)
+		stack_in = cheak_set_cotes(&size, av[1]);
+	else
+	{
+		stack_in = set_stack(&av[1], size);
+		check_all(&av[1], stack_in, size, 0);
+	}
+	return (stack_in);
 }
