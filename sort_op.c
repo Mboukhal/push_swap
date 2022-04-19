@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:39:45 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 23:59:34 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 00:24:34 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,21 @@ t_stack	*init_stack(int *stack, int size, int status)
 	set = malloc(sizeof(t_stack));
 	if (!set)
 		return (NULL);
-	i = -1;
-	set->data = malloc(sizeof(int) * size);
+	set->data = malloc(sizeof(int) * (size + 1));
 	if (!set->data)
 		return (NULL);
 	if (status == 1)
 		set->size = size;
 	else
 		set->size = 0;
-	while (i++ < size)
+	i = 0;
+	while (i < size)
 	{
 		if (set->size == 0)
 			set->data[i] = stack[i];
 		else
 			set->data[i] = stack[i];
+		i++;
 	}
 	return (set);
 }
@@ -94,7 +95,8 @@ void	sort_stack(int *stack, int size)
 		main_sort_big(sa, sb);
 	free(sa->data);
 	free(sa);
-	free(sb->data);
+	if (sb->size != 0)
+		free(sb->data);
 	free(sb);
 }
 

@@ -6,7 +6,7 @@
 #    By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 12:49:36 by mboukhal          #+#    #+#              #
-#    Updated: 2022/04/18 16:50:58 by mboukhal         ###   ########.fr        #
+#    Updated: 2022/04/19 01:24:24 by mboukhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CFILES				= push_swap.c error_ps.c sort_op.c ft_split.c		\
 CFBONUS				= checker.c checker_op.c error_ps.c sort_op.c 		\
 					 cote_ps.c sort_max.c list_func.c instraction.c 	\
 					 sort_min.c ft_atoi.c ft_itoa.c ft_put.c ft_split.c 	
-CFLAGS				= -Wall -Wextra -Werror
+CFLAGS				= -Wall -Wextra -Werror 
 
 OBJS			= $(CFILES:.c=.o)
 BOBJS			= $(CFBONUS:.c=.o)
@@ -38,10 +38,10 @@ re: fclean all
 	$(CC) $(CFLAGS) -c $< 
 
 $(NAME):$(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -g -fsanitize=address
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -fsanitize=address
 
 $(BONUS):$(BOBJS)
-	$(CC) $(CFLAGS) -o $(BONUS) $(BOBJS) -g -fsanitize=address
+	$(CC) $(CFLAGS) -o $(BONUS) $(BOBJS) -fsanitize=address
 	
 all: $(NAME)
 
