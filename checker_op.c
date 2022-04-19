@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 11:30:16 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 16:33:15 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 23:59:52 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,8 @@ void	sort_stack_checker(int *stack, int size)
 		write(STDOUT_FILENO, "OK\n", 3);
 	else
 		write(STDOUT_FILENO, "KO\n", 3);
-	if (sb->size > 0)
-		free(sa->data);
-	if (sb->size > 0)
-		free(sb->data);
+	free(sa->data);
+	free(sb->data);
 	free(sa);
 	free(sb);
 }

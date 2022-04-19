@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:39:45 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 16:19:34 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 23:59:34 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,9 @@ void	sort_stack(int *stack, int size)
 		main_sort_min(sa, sb);
 	else
 		main_sort_big(sa, sb);
-	if (sb->size > 0)
-		free(sa->data);
+	free(sa->data);
 	free(sa);
-	if (sb->size > 0)
-		free(sb->data);
+	free(sb->data);
 	free(sb);
 }
 
