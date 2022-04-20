@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 16:21:44 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:53:26 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_swap_int(int *a, int *b);
 
 //              check and initialisation
 t_stack	*init_stack(int *stack, int size, int status);
-int		*check_av(char **av, int size);
+int		*check_av(char **av, int *size);
 int		*cheak_set_cotes(int *size, char *cote);
 t_stack	*stack_to_list(int *st, int size);
 void	cheak_arg(char *av, int size);

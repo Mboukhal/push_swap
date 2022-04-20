@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:50:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 11:27:41 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:55:26 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	main(int ac, char **av)
 {
-	int		size;
+	int		size[1];
 	int		*stack_in;
 
-	size = ac - 1;
+	*size = ac - 1;
 	stack_in = check_av(av, size);
-	sort_stack(stack_in, size);
+	sort_stack(stack_in, *size);
 	return (EXIT_SUCCESS);
 }

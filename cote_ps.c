@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 22:02:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 16:23:28 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:53:20 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,18 @@ int	*cheak_set_cotes(int *size, char *cote)
 	return (stack);
 }
 
-int	*check_av(char **av, int size)
+int	*check_av(char **av, int *size)
 {
 	int		*stack_in;
 
-	if (size < 1)
+	if (*size < 1)
 		exit (EXIT_FAILURE);
-	else if (size == 1)
-		stack_in = cheak_set_cotes(&size, av[1]);
+	else if (*size == 1)
+		stack_in = cheak_set_cotes(size, av[1]);
 	else
 	{
-		stack_in = set_stack(&av[1], size);
-		check_all(&av[1], stack_in, size, 0);
+		stack_in = set_stack(&av[1], *size);
+		check_all(&av[1], stack_in, *size, 0);
 	}
 	return (stack_in);
 }

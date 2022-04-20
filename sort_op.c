@@ -89,14 +89,13 @@ void	sort_stack(int *stack, int size)
 	free(stack);
 	sb->size_max = sa->size;
 	sa->size_max = sa->size;
-	if (sa->size <= 5)
+	if (sa->size < 6)
 		main_sort_min(sa, sb);
 	else
 		main_sort_big(sa, sb);
 	free(sa->data);
 	free(sa);
-	if (sb->size != 0)
-		free(sb->data);
+	free(sb->data);
 	free(sb);
 }
 
