@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 11:30:16 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/18 23:59:52 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/22 22:11:00 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,36 +36,26 @@ static int	ft_valid(char *av)
 		return (PA);
 	else if (av[0] == 'p' && av[1] == 'b' && av[2] == '\n')
 		return (PB);
-	write(STDERR_FILENO, "Error\n", 6);
-	write(STDERR_FILENO, "\tNon valide instraction !\n", 27);
-	exit (EXIT_FAILURE);
+	else if (av[0] == '\n')
+		return (EOF);
+	return (-2);
 }
 
 int	read_instraction(void)
 {
-	char	s[5];
+	char	s[1024];
 	int		i;
 
 	i = 0;
-	if (read(STDIN_FILENO, &s[0], 1) == 0)
-		return (EOF);
-	if (s[0] == 'r' || s[0] == 's' || s[0] == 'p')
+	s[4] = '\0';
+	read(STDIN_FILENO, s, 1024);
+	i = ft_valid(s);
+	if (i == -2)
 	{
-		i++;
-		read(STDIN_FILENO, &s[1], 1);
-		if (s[1] == 'r' || s[1] == 'a' || s[1] == 'b')
-		{
-			i++;
-			read(STDIN_FILENO, &s[2], 1);
-			if (s[2] == 'r' || s[2] == 'a' || s[2] == 'b')
-			{
-				i++;
-				read(STDIN_FILENO, &s[3], 1);
-			}
-		}
+		write(STDERR_FILENO, "Error\n", 6);
+		exit (EXIT_FAILURE);
 	}
-	s[i + 1] = '\0';
-	return (ft_valid(s));
+	return (i);
 }
 
 void	loop_back(t_stack *sa, t_stack *sb)
@@ -76,6 +66,8 @@ void	loop_back(t_stack *sa, t_stack *sb)
 	while (i != EOF)
 	{
 		i = read_instraction();
+		if (i == EOF)
+			return ;
 		exec_instration(sa, sb, i, PRINT_OFF);
 	}
 }
