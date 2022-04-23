@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 22:02:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/23 17:54:50 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/23 17:55:08 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ static void	check_sorted(int size, int *stack)
 		i++;
 	}
 	if (i == size)
-	{
-		system("leaks push_swap");
 		exit (EXIT_FAILURE);
-	}
 }
 
 void	check_all(char **str, int *stack_in, int size, int status)
