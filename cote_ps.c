@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 22:02:59 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/23 17:55:08 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/23 18:27:07 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,15 @@ static void	check_sorted(int size, int *stack)
 {
 	int	i;
 
-	i = 0;
-	while (i < size)
+	i = size - 1;
+	while (i)
 	{
-		if (stack[i] > stack[i + 1])
+		// printf("%d |%d < %d|\n", size, stack[i - 1] , stack[i]);
+		if (stack[i - 1] > stack[i])
 			break ;
-		i++;
+		i--;
 	}
-	if (i == size)
+	if (i == 0)
 		exit (EXIT_FAILURE);
 }
 
