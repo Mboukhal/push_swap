@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 11:30:16 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/22 22:11:00 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/23 16:47:16 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@ static int	ft_valid(char *av)
 		return (RA);
 	else if (av[0] == 'r' && av[1] == 'b' && av[2] == '\n')
 		return (RB);
-	else if (av[0] == 'r' && av[1] == 'r' && av[2] == 'a' && av[3] == '\n')
-		return (RRA);
-	else if (av[0] == 'r' && av[1] == 'r' && av[2] == 'b' && av[3] == '\n')
-		return (RRB);
-	else if (av[0] == 'r' && av[1] == 'r' && av[2] == 'r' && av[3] == '\n')
-		return (RRR);
 	else if (av[0] == 'r' && av[1] == 'r' && av[2] == '\n')
 		return (RR);
 	else if (av[0] == 's' && av[1] == 'a' && av[2] == '\n')
@@ -36,40 +30,41 @@ static int	ft_valid(char *av)
 		return (PA);
 	else if (av[0] == 'p' && av[1] == 'b' && av[2] == '\n')
 		return (PB);
-	else if (av[0] == '\n')
-		return (EOF);
+	else if (av[0] == 'r' && av[1] == 'r' && av[2] == 'a' && av[3] == '\n')
+		return (RRA);
+	else if (av[0] == 'r' && av[1] == 'r' && av[2] == 'b' && av[3] == '\n')
+		return (RRB);
+	else if (av[0] == 'r' && av[1] == 'r' && av[2] == 'r' && av[3] == '\n')
+		return (RRR);
 	return (-2);
-}
-
-int	read_instraction(void)
-{
-	char	s[1024];
-	int		i;
-
-	i = 0;
-	s[4] = '\0';
-	read(STDIN_FILENO, s, 1024);
-	i = ft_valid(s);
-	if (i == -2)
-	{
-		write(STDERR_FILENO, "Error\n", 6);
-		exit (EXIT_FAILURE);
-	}
-	return (i);
 }
 
 void	loop_back(t_stack *sa, t_stack *sb)
 {
-	int	i;
+	int		i;
+	int		l;
+	char	*s;
 
 	i = 0;
-	while (i != EOF)
+	l = 0;
+	while (1)
 	{
-		i = read_instraction();
-		if (i == EOF)
-			return ;
+		s = get_next_line(STDIN_FILENO);
+		if (!s)
+			break ;
+		i = ft_valid(s);
+		free(s);
+		if (i == -2)
+			break ;
 		exec_instration(sa, sb, i, PRINT_OFF);
+		l++;
 	}
+	if (l == 0 || i == -2)
+	{
+		write(STDERR_FILENO, "Error\n", 6);
+		exit (EXIT_FAILURE);
+	}
+	free(s);
 }
 
 void	sort_stack_checker(int *stack, int size)

@@ -6,7 +6,7 @@
 /*   By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:51:09 by mboukhal          #+#    #+#             */
-/*   Updated: 2022/04/20 15:53:26 by mboukhal         ###   ########.fr       */
+/*   Updated: 2022/04/23 16:43:41 by mboukhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
+# include "get_next_line.h"
 
 typedef struct stacks
 {
@@ -26,7 +27,6 @@ typedef struct stacks
 }t_stack;
 
 //              utiles
-size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
