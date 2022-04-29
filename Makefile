@@ -6,7 +6,7 @@
 #    By: mboukhal <mboukhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 12:49:36 by mboukhal          #+#    #+#              #
-#    Updated: 2022/04/23 16:32:29 by mboukhal         ###   ########.fr        #
+#    Updated: 2022/04/29 15:37:25 by mboukhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,13 +38,13 @@ fclean: clean
 re: fclean all
 
 .c.o:
-	@$(CC) $(CFLAGS) -c $< 
+	$(CC) $(CFLAGS) -c $< 
 
 $(NAME):$(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 $(BONUS):$(BOBJS)
-	@$(CC) $(CFLAGS) -o $(BONUS) $(BOBJS)
+	$(CC) $(CFLAGS) -o $(BONUS) $(BOBJS)
 	
 all: $(NAME)
 
